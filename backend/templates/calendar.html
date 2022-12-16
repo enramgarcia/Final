@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.min.css" rel="stylesheet">
+{% endblock %}
+{% block main %}
+    <div id='calendar'></div>
+{% endblock %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        dateClick: (day) => {
+            console.log(day);
+        },
+        selectAllow: (day, e) => {
+            console.log(day, e);
+        }
+    });
+    calendar.render();
+  });
+
+</script>
+{% endblock %}
